@@ -1,0 +1,171 @@
+/*
+
+  Base
+  ----------------------------------------------------------------------------
+
+  Use this file to set some basic global styling and extra resets if you need to.
+
+
+*/
+
+//  Variables
+$link-color: $black;
+
+//  Rules
+
+html {
+  box-sizing: border-box;
+  overflow-x: visible;  
+
+  @include touch {
+    &.no-scroll {
+      overflow: hidden !important;
+    }
+  }
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  letter-spacing: 1px;
+  color: $black;
+  background-color: $white;
+  font-family: 'GT Maru Regular';
+
+  @include mobile {
+    font-size: rem(18);
+
+    &.no-scroll {
+      overflow-x: hidden !important;
+    }
+  }
+
+  @include tablet {
+    font-size: rem(24);
+
+    &.no-scroll {
+      overflow: hidden !important;
+    }
+  }
+
+  .app {
+    margin-top: rem(20);
+  }
+
+  h1 {
+    font-size: rem(60);
+    padding: rem(30) 0;
+    font-weight: bold;
+    
+    span {
+      color: $green;
+    }
+  }
+
+  h3 {
+    font-size: rem(20);
+    font-style: italic;
+    color: $green;
+    font-weight: bold;  
+  }
+
+  h4 {
+    font-size: rem(24);
+  }
+
+
+  h5 {
+    font-size: rem(20);
+    font-weight: bold;
+    padding: rem(30) 0 rem(20) 0;
+  }
+}
+
+a {  
+  text-decoration: none;
+  outline: 0;  
+
+  &.has-icon {
+    display: flex;
+    align-items: center;
+  }
+
+  .icon:first-child {
+    margin-right: rem(4);
+  }
+
+  .icon:last-child {
+    margin-left: rem(4);
+  }
+}
+
+p {
+  margin: 0;
+  font-size: rem(16);
+  line-height: 24px;
+
+  &:not(:last-child) {
+
+    margin-bottom: 1.125rem;
+  }
+
+  &:empty {
+    margin: 0 !important;
+  }
+}
+
+b {
+  font-weight: 400;
+}
+
+ul, ol {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+figure {
+  margin: 0;
+  line-height: 1;
+}
+
+img {
+  max-width: 100%;
+}
+
+button {
+  padding: 0;
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+}
+
+//input {
+//  font-family: $f|nt-open-sans;
+//}
+
+input:focus {
+  outline: none;
+}
+
+::selection {
+  background: $black; /* WebKit/Blink Browsers */
+  color: $white;
+}
+::-moz-selection {
+  background: $black; /* Gecko Browsers */
+  color: $white;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  margin: 0;
+}
+
+small {
+  font-size: rem(12);
+}

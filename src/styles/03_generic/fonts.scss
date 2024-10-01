@@ -1,0 +1,85 @@
+/*
+
+  Fonts
+  ----------------------------------------------------------------------------
+
+  Use this file to register all the fonts for the project using @font-face or Google fonts.
+  After registering your fonts, it is recommended that you create variables so it's easier to
+  use the fonts in your rules.
+
+  For example, if you load Open Sans, at the end of this file create a variable like:
+  $font-open-sans: 'Open Sans';
+
+  This last step is NOT necessary and is still under evaluation for viability.
+
+*/
+
+@font-face {
+  font-family: 'GT Maru Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('GT Maru Regular'), url('/fonts/GTMaruRegular.woff') format('woff');
+}
+  
+@font-face {
+  font-family: 'GT Maru Regular Oblique';
+  font-style: normal;
+  font-weight: normal;
+  src: local('GT Maru Regular Oblique'), url('/fonts/GTMaruRegularOblique.woff') format('woff');
+}
+  
+@font-face {
+  font-family: 'GT Maru Light';
+  font-style: normal;
+  font-weight: normal;
+  src: local('GT Maru Light'), url('/fonts/GTMaruLight.woff') format('woff');
+}
+  
+@font-face {
+  font-family: 'GT Maru Light Oblique';
+  font-style: normal;
+  font-weight: normal;
+  src: local('GT Maru Light Oblique'), url('/fonts/GTMaruLightOblique.woff') format('woff');
+}
+  
+@font-face {
+  font-family: 'GT Maru Medium';
+  font-style: normal;
+  font-weight: normal;
+  src: local('GT Maru Medium'), url('/fonts//font/GTMaruMedium.woff') format('woff');
+}
+  
+@font-face {
+  font-family: 'GT Maru Medium Oblique';
+  font-style: normal;
+  font-weight: normal;
+  src: local('GT Maru Medium Oblique'), url('/fonts/GTMaruMediumOblique.woff') format('woff');
+}
+  
+@font-face {
+  font-family: 'GT Maru Bold';
+  font-style: normal;
+  font-weight: normal;
+  src: local('GT Maru Bold'), url('/fonts/GTMaruBold.woff') format('woff');
+}
+  
+@font-face {
+  font-family: 'GT Maru Bold Oblique';
+  font-style: normal;
+  font-weight: normal;
+  src: local('GT Maru Bold Oblique'), url('/fonts/GTMaruBoldOblique.woff') format('woff');
+}
+  
+@font-face {
+  font-family: 'GT Maru Black';
+  font-style: normal;
+  font-weight: normal;
+  src: local('GT Maru Black'), url('/fonts/GTMaruBlack.woff') format('woff');
+}
+  
+@font-face {
+  font-family: 'GT Maru Black Oblique';
+  font-style: normal;
+  font-weight: normal;
+  src: local('GT Maru Black Oblique'), url('/fonts/GTMaruBlackOblique.woff') format('woff');
+}

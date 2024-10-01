@@ -1,0 +1,28 @@
+/*
+
+  Initial Variables
+  ----------------------------------------------------------------------------
+
+  Here we define some basic variables like colors and a default font family.
+
+  These variables should NOT be accessed directly by any CSS rule.
+  Instead, define a new variable depending on what you need and set its
+  value to one of these variables.
+
+  The rule of thumb here is: any color present on the website or project
+  we are working on, should be listed here.
+
+  ie.
+  $link-color: $black;
+
+  Any variables that alter the layout like container sizes or responsive
+  breakpoints should be defined here as well.
+
+*/
+
+//  Colors
+
+$black: #000000;
+$white: #ffffff;
+$green: #008278;
+$gray: #D8D8D8;

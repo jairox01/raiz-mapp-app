@@ -1,0 +1,8 @@
+@function em($size: 16, $context: 16) {
+  @return ($size / $context) * 1em;
+}
+
+@function rem($size: 16, $context: 16) {
+  @return ($size / $context) * 1rem;
+}
+
