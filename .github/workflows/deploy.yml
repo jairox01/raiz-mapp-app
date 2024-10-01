@@ -15,7 +15,7 @@ jobs:
     - name: Install Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '18'  # Asegúrate de que coincida con tu versión de Node.js
+        node-version: '18' 
 
     - name: Install pnpm
       run: npm install -g pnpm
@@ -29,5 +29,5 @@ jobs:
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:
-        github_token: ${{ secrets.GH_TOKEN }}  # Cambiado a tu token personal
+        github_token: ${{ secrets.GH_TOKEN }} 
         publish_dir: ./out
