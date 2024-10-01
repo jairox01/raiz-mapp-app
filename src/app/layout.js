@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
             <div className="columns">
             <div className="site-header__branding column">
               <a href="/" className="site-header__branding-link">
-                <Image src="/images/oikos_logo.png" alt="Oikos Logo" width={256} height={101} />
+                <Image src="./images/oikos_logo.png" alt="Oikos Logo" width={256} height={101} />
               </a>
             </div>
             <div className="site-header__menu">
@@ -40,13 +40,13 @@ export default function RootLayout({ children }) {
               <div className="column">
                 <div className="sposors">
                     <a href="">
-                      <img src="/images/aics.png" alt="Aliado 1" />
+                      <img src="./images/aics.png" alt="Aliado 1" />
                     </a>
                     <a href="">
-                      <img src="/images/cevi.png" alt="Aliado 2" />
+                      <img src="./images/cevi.png" alt="Aliado 2" />
                     </a>
                     <a href="">
-                      <img src="/images/isais.png" alt="Aliado 3" width={120} height={100} />
+                      <img src="./images/isais.png" alt="Aliado 3" width={120} height={100} />
                     </a>
                 </div>
               </div>              

@@ -4,5 +4,5 @@ const nextConfig = {
     assetPrefix: process.env.NODE_ENV === 'production' ? '/raiz-map-app/' : '',
   };
   
-  module.exports = nextConfig; // Usa `module.exports` en lugar de `export default`
+  module.exports = nextConfig;
   

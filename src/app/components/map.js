@@ -72,7 +72,7 @@ const MapComponent = () => {
             >
               <div class="info-window">
                 <h5>{selectedMarker.specie}</h5>
-                <img src="/images/pajaro-quemamais.png"/>
+                <img src="./images/pajaro-quemamais.png"/>
                 <p><strong>Familia: </strong>{selectedMarker.family}</p>
                 <a onClick={() => {
                   const element = document.getElementById("info-box");
@@ -89,7 +89,7 @@ const MapComponent = () => {
             <div className={'card'} id="info-box">
               <div class="columns">
                 <div class="column">
-                  <img src="/images/pajaro-quemamais.png"/>
+                  <img src="./images/pajaro-quemamais.png"/>
                   <ul>
                     <li><strong>Latitud:</strong> {selectedMarker.latitude}</li>
                     <li><strong>Longitud:</strong> {selectedMarker.longitude}</li>
