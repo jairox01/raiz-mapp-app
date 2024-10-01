@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === 'production';
+
 const nextConfig = {
-    output: 'export',
-    assetPrefix: process.env.NODE_ENV === 'production' ? '/raiz-map-app/' : '',
-  };
-  
-  module.exports = nextConfig;
-  
+  assetPrefix: isProd ? '/raiz-mapp-app/' : '',
+};
+
+module.exports = nextConfig;

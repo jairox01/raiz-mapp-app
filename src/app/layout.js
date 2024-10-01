@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
             <div className="columns">
             <div className="site-header__branding column">
               <a href="/" className="site-header__branding-link">
-                <Image src="./images/oikos_logo.png" alt="Oikos Logo" width={256} height={101} />
+                <img src="./images/oikos_logo.png" alt="Oikos Logo"/>
               </a>
             </div>
             <div className="site-header__menu">
