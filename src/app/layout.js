@@ -14,12 +14,12 @@ export default function RootLayout({ children }) {
         <header className="site-header">
           <div className="container">
             <div className="columns">
-            <div className="site-header__branding column">
+            <div className="site-header__branding column is-3">
               <a href="/" className="site-header__branding-link">
                 <img src="./images/oikos_logo.png" alt="Oikos Logo"/>
               </a>
             </div>
-            <div className="site-header__menu">
+            <div className="site-header__menu column is-9">
               <ul>
                 <li><a className="active" href="/">Inicio</a></li>
                 <li><a href="/">Contáctanos</a></li>
