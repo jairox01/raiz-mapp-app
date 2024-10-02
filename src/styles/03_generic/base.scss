@@ -58,7 +58,7 @@ body {
 
   h1 {
     font-size: rem(60);
-    padding: rem(30) 0;
+    padding: rem(10) 0 rem(30) 0;
     font-weight: bold;
     
     span {
@@ -87,7 +87,6 @@ body {
   @media only screen and (max-width: 600px) {
     h1 {
       font-size: rem(30);
-      padding: 0 0 rem(15) 0;
     }
   }
 }
