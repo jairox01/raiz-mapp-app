@@ -38,7 +38,7 @@ export default function RootLayout({ children }) {
             </div>
             <div className="columns">              
               <div className="column">
-                <div className="sposors">
+                <div className="sponsors">
                     <a href="">
                       <img src="./images/aics.png" alt="Aliado 1" />
                     </a>

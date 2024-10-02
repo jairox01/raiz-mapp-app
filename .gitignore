@@ -15,6 +15,7 @@
 
 # production
 /build
+/src/styles/03_generic/fonts.scss
 
 # misc
 .DS_Store

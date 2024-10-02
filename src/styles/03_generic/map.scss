@@ -26,6 +26,7 @@
 
     .info-window {
         text-align: center;
+        padding: 0 0 rem(10) 0;
         h5 {
             font-style: italic;
             padding: rem(5) rem(20);
@@ -38,11 +39,14 @@
             border: rem(10) solid $green
         }
         p {
-            font-size: rem(14);    
+            font-size: rem(14);
+            margin-bottom: 0;    
         }
 
         a {
             color: #00aaff;
+            padding: rem(10) 0;
+            font-weight: bold;
         }
     }
 }

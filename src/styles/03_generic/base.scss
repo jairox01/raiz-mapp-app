@@ -83,6 +83,13 @@ body {
     font-weight: bold;
     padding: rem(30) 0 rem(20) 0;
   }
+
+  @media only screen and (max-width: 600px) {
+    h1 {
+      font-size: rem(30);
+      padding: 0 0 rem(15) 0;
+    }
+  }
 }
 
 a {  
@@ -105,8 +112,8 @@ a {
 
 p {
   margin: 0;
-  font-size: rem(16);
-  line-height: 24px;
+  font-size: rem(14);
+  line-height: 30px;
 
   &:not(:last-child) {
 

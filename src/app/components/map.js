@@ -70,7 +70,7 @@ const MapComponent = () => {
             position={selectedMarker.position}
               onCloseClick={() => setSelectedMarker(null)}  // Cierra el InfoWindow
             >
-              <div class="info-window">
+              <div className="info-window">
                 <h5>{selectedMarker.specie}</h5>
                 <img src="./images/pajaro-quemamais.png"/>
                 <p><strong>Familia: </strong>{selectedMarker.family}</p>
@@ -87,8 +87,8 @@ const MapComponent = () => {
         <div>
           {selectedMarker && (
             <div className={'card'} id="info-box">
-              <div class="columns">
-                <div class="column">
+              <div className="columns">
+                <div className="column">
                   <img src="./images/pajaro-quemamais.png"/>
                   <ul>
                     <li><strong>Latitud:</strong> {selectedMarker.latitude}</li>
@@ -98,7 +98,7 @@ const MapComponent = () => {
                     <li><strong>Estado de conservación:</strong> {selectedMarker.status}</li>
                   </ul>
                 </div>
-                <div class="column">
+                <div className="column">
                   <h3>{selectedMarker.specie}</h3>
                   <h5>Descripción</h5>
                   <p>{selectedMarker.longDescription}</p>

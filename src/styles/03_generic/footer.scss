@@ -8,7 +8,7 @@ footer {
         font-weight: bold;
     }
 
-    .sposors {
+    .sponsors {
         display: flex;
         flex-direction: row;
         width: 80%;
@@ -18,6 +18,19 @@ footer {
 
         img {
             max-width: 120px;
+        }
+    }
+
+    @media only screen and (max-width: 600px) { 
+        .sponsors {
+            flex-direction: column;
+            align-items: center;
+
+            a {
+                display: inline;
+                margin: auto;
+                padding: rem(20);
+            }
         }
     }
 }
