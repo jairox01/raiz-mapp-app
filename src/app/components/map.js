@@ -14,13 +14,15 @@ const center = {
 
 const MapComponent = () => {
   const [markers, setMarkers] = useState([]);
+  const [filteredMarkers, setFilteredMarkers] = useState([]);
   const [selectedMarker, setSelectedMarker] = useState(null);
+  const [selectedGroup, setSelectedGroup] = useState('');  
 
   useEffect(() => {
     const fetchMarkers = async () => {
       const spreadsheetId = '1YpG6mjwNuiSApHwJafqaiGnNccAE746gk56Z1SJc4Gg'; // Reemplaza con el ID de tu Spreadsheet
       const apiKey = 'AIzaSyByc4JiGVTQCH4w-tPZWnNfVyjcgAjuBjo'; // Reemplaza con tu API Key
-      const range = 'FUNES!A:N'; // Cambia el rango según la estructura de tu hoja
+      const range = 'GENERAL!A:P'; // Cambia el rango según la estructura de tu hoja
 
       try {
         const response = await axios.get(
@@ -53,11 +55,56 @@ const MapComponent = () => {
     setSelectedMarker(marker);    
   };
 
-  return (
+  const handleGroupChange = (event) => {
+    const selectedGroup = event.target.value;
+    setSelectedGroup(selectedGroup);
+    console.log(markers);
+    // Filtra los marcadores según el grupo seleccionado
+    const newFilteredMarkers = markers.filter(marker => marker.group === selectedGroup);    
+    setFilteredMarkers(newFilteredMarkers);
+  };
+
+  return (    
     <div>
+      <div className="filters">
+        <h4>Filtrar por grupo:</h4>
+        <div className="columns">
+          <div className="column is-6">
+            <div className="items-filter">
+              <label>
+                <input
+                  type="radio"
+                  value="aves"
+                  checked={selectedGroup === 'Aves'}
+                  onChange={handleGroupChange}
+                />
+                Aves
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  value="plantas"
+                  checked={selectedGroup === 'Plantas'}
+                  onChange={handleGroupChange}
+                />
+                Plantas
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  value="otros"
+                  checked={selectedGroup === 'otros'}
+                  onChange={handleGroupChange}
+                />
+                Otros
+              </label>
+            </div>             
+          </div> 
+        </div>      
+      </div>           
       <LoadScript googleMapsApiKey="AIzaSyByc4JiGVTQCH4w-tPZWnNfVyjcgAjuBjo">
         <GoogleMap mapContainerStyle={mapContainerStyle} center={center} zoom={12}>
-          {markers.map((marker, index) => (
+          {filteredMarkers.map((marker, index) => (
             <Marker
               key={index}
               position={marker.position}
@@ -67,7 +114,7 @@ const MapComponent = () => {
 
           {selectedMarker && (
             <InfoWindow
-            position={selectedMarker.position}
+              position={selectedMarker.position}
               onCloseClick={() => setSelectedMarker(null)}  // Cierra el InfoWindow
             >
               <div className="info-window">
@@ -84,6 +131,7 @@ const MapComponent = () => {
             </InfoWindow>
           )}
         </GoogleMap>
+
         <div>
           {selectedMarker && (
             <div className={'card'} id="info-box">
@@ -108,6 +156,7 @@ const MapComponent = () => {
           )}
         </div>       
       </LoadScript>
+      
     </div>    
   );
 };
