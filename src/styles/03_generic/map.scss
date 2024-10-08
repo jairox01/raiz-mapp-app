@@ -1,5 +1,5 @@
 .map-container {
-    padding: rem(40) 0;
+    padding: rem(30) 0;
     border-top: 1px dashed $gray;
     border-bottom: 1px dashed $gray;
 
@@ -47,6 +47,87 @@
             color: #00aaff;
             padding: rem(10) 0;
             font-weight: bold;
+        }
+    }
+
+    .filters {
+
+        h4 {
+            font-size: rem(15);
+        }
+        text-align: right;
+        display: flex;
+        margin: rem(20) 0;
+        font-size: rem(15);
+
+        .filter-container {
+            display: flex;
+
+            div {
+                margin-left: rem(15);
+
+                input {
+                    margin-right: rem(5);
+                }
+            }
+
+
+            .custom-radio input[type="radio"] {
+                position: absolute;
+                opacity: 0;
+                cursor: pointer;
+              }
+            
+              /* Estilo del contenedor del radiobutton */
+              .custom-radio {
+                display: inline-block;
+                position: relative;
+                padding-left: rem(25);
+                margin-right: rem(10);
+                cursor: pointer;
+                font-size: rem(16);
+                user-select: none;
+              }
+            
+              /* Círculo personalizado */
+              .custom-radio .checkmark {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: rem(20);
+                width: rem(20);
+                background-color: #eee;
+                border-radius: 50%;
+                border: 2px solid #ccc;
+              }
+            
+              /* Cambia el fondo del círculo cuando esté seleccionado */
+              .custom-radio input[type="radio"]:checked ~ .checkmark {
+                background-color: $green; /* Color al seleccionar (verde en este caso) */
+                border-color: $green; 
+              }
+            
+              /* Círculo interior que simula el puntito dentro del radiobutton */
+              .custom-radio .checkmark:after {
+                content: "";
+                position: absolute;
+                display: none;
+              }
+            
+              /* Estilo del círculo interior cuando está seleccionado */
+              .custom-radio input[type="radio"]:checked ~ .checkmark:after {
+                display: block;
+              }
+            
+              /* Estilo del círculo interior: pequeño y centrado */
+              .custom-radio .checkmark:after {
+                top: rem(3);
+                left: rem(3);
+                width: rem(10);
+                height: rem(10);
+                border-radius: 50%;
+                background: white;
+              }
         }
     }
 }

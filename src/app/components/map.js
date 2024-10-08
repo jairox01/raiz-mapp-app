@@ -14,9 +14,8 @@ const center = {
 
 const MapComponent = () => {
   const [markers, setMarkers] = useState([]);
-  const [filteredMarkers, setFilteredMarkers] = useState([]);
   const [selectedMarker, setSelectedMarker] = useState(null);
-  const [selectedGroup, setSelectedGroup] = useState('');  
+  const [selectedGroup, setSelectedGroup] = useState(''); // Estado para el filtro
 
   useEffect(() => {
     const fetchMarkers = async () => {
@@ -30,7 +29,7 @@ const MapComponent = () => {
         );
 
         const formattedMarkers = response.data.values.map(item => ({
-          group: item[0],
+          group: item[0], // Esta es la columna A
           specie: item[1],
           origin: item[2],
           taxon: item[3],
@@ -56,61 +55,77 @@ const MapComponent = () => {
   };
 
   const handleGroupChange = (event) => {
-    const selectedGroup = event.target.value;
-    setSelectedGroup(selectedGroup);
-    console.log(markers);
-    // Filtra los marcadores según el grupo seleccionado
-    const newFilteredMarkers = markers.filter(marker => marker.group === selectedGroup);    
-    setFilteredMarkers(newFilteredMarkers);
+    setSelectedGroup(event.target.value); // Actualiza el grupo seleccionado
   };
 
-  return (    
+  // Función para obtener el color del ícono según el grupo
+  const getMarkerIcon = (group) => {
+    switch (group) {
+      case 'Aves':
+        return 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
+      case 'Plantas':
+        return 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';      
+      default:
+        return 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'; // Color por defecto
+    }
+  };
+
+  return (
     <div>
       <div className="filters">
-        <h4>Filtrar por grupo:</h4>
-        <div className="columns">
-          <div className="column is-6">
-            <div className="items-filter">
-              <label>
-                <input
-                  type="radio"
-                  value="aves"
-                  checked={selectedGroup === 'Aves'}
-                  onChange={handleGroupChange}
-                />
-                Aves
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  value="plantas"
-                  checked={selectedGroup === 'Plantas'}
-                  onChange={handleGroupChange}
-                />
-                Plantas
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  value="otros"
-                  checked={selectedGroup === 'otros'}
-                  onChange={handleGroupChange}
-                />
-                Otros
-              </label>
-            </div>             
-          </div> 
-        </div>      
-      </div>           
+        <h4>Filtrar:</h4>
+        <div className="filter-container">
+          <div className="custom-radio">
+            <label>
+              <input
+                type="radio"
+                value=""
+                checked={selectedGroup === ''}
+                onChange={handleGroupChange}
+              />
+              Todos
+              <span class="checkmark"></span>
+            </label>
+          </div>
+          <div className="custom-radio">
+            <label>
+              <input
+                type="radio"
+                value="Aves"
+                checked={selectedGroup === 'Aves'}
+                onChange={handleGroupChange}
+              />
+              Aves
+              <span class="checkmark"></span>
+            </label>
+          </div>
+          <div className="custom-radio">
+            <label>
+              <input
+                type="radio"
+                value="Plantas"
+                checked={selectedGroup === 'Plantas'}
+                onChange={handleGroupChange}
+              />
+              Plantas
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>                    
+      </div>
+
       <LoadScript googleMapsApiKey="AIzaSyByc4JiGVTQCH4w-tPZWnNfVyjcgAjuBjo">
         <GoogleMap mapContainerStyle={mapContainerStyle} center={center} zoom={12}>
-          {filteredMarkers.map((marker, index) => (
-            <Marker
-              key={index}
-              position={marker.position}
-              onClick={() => handleMarkerClick(marker)}
-            />            
-          ))}
+          {markers
+            .filter(marker => selectedGroup === '' || marker.group === selectedGroup) // Muestra todos si no hay filtro
+            .map((marker, index) => (
+              <Marker
+                key={index}
+                position={marker.position}
+                icon={getMarkerIcon(marker.group)} // Cambia el ícono según el grupo
+                onClick={() => handleMarkerClick(marker)}
+              />
+            ))}
 
           {selectedMarker && (
             <InfoWindow
@@ -156,9 +171,8 @@ const MapComponent = () => {
           )}
         </div>       
       </LoadScript>
-      
     </div>    
   );
 };
 
-export default MapComponent;
+export default MapComponent;    
