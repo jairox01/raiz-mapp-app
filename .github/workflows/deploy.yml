@@ -25,6 +25,10 @@ jobs:
 
     - name: Build the project
       run: pnpm build
+
+    # Copia el archivo CNAME a la carpeta de salida
+    - name: Copy CNAME file
+      run: cp CNAME ./out/CNAME
     
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
