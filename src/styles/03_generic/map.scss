@@ -55,7 +55,6 @@
         h4 {
             font-size: rem(15);
         }
-        text-align: right;
         display: flex;
         margin: rem(20) 0;
         font-size: rem(15);
@@ -129,5 +128,19 @@
                 background: white;
               }
         }
-    }
+
+        @include mobile {
+            display: inline-block;
+
+            .filter-container {
+                padding: rem(10) 0;
+
+                .custom-radio {
+                    padding-left: rem(20);
+                    margin-right: 0;
+                    font-size: rem(14);
+                }
+            }
+        }
+    }    
 }
