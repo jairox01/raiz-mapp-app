@@ -65,6 +65,8 @@ const MapComponent = () => {
         return 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
       case 'Plantas':
         return 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';      
+      case 'Turismo':
+        return 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png';      
       default:
         return 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'; // Color por defecto
     }
@@ -84,7 +86,7 @@ const MapComponent = () => {
                 onChange={handleGroupChange}
               />
               Todos
-              <span class="checkmark"></span>
+              <span className="checkmark"></span>
             </label>
           </div>
           <div className="custom-radio">
@@ -96,7 +98,7 @@ const MapComponent = () => {
                 onChange={handleGroupChange}
               />
               Aves
-              <span class="checkmark"></span>
+              <span className="checkmark"></span>
             </label>
           </div>
           <div className="custom-radio">
@@ -108,7 +110,19 @@ const MapComponent = () => {
                 onChange={handleGroupChange}
               />
               Plantas
-              <span class="checkmark"></span>
+              <span className="checkmark"></span>
+            </label>
+          </div>
+          <div className="custom-radio">
+            <label>
+              <input
+                type="radio"
+                value="Turismo"
+                checked={selectedGroup === 'Turismo'}
+                onChange={handleGroupChange}
+              />
+              Turismo
+              <span className="checkmark"></span>
             </label>
           </div>
         </div>                    
