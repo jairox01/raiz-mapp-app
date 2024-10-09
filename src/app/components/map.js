@@ -1,27 +1,21 @@
-"use client"; // Agrega esta línea al principio del archivo
+"use client";
 import React, { useState, useEffect } from 'react';
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import axios from 'axios';
 
-const mapContainerStyle = {
-  height: '1000px',
-};
-
-const center = {
-  lat: 0.9214413,
-  lng: -77.4354531,
-};
+const mapContainerStyle = { height: '1000px' };
+const center = { lat: 0.9214413, lng: -77.4354531 };
 
 const MapComponent = () => {
   const [markers, setMarkers] = useState([]);
   const [selectedMarker, setSelectedMarker] = useState(null);
-  const [selectedGroup, setSelectedGroup] = useState(''); // Estado para el filtro
+  const [selectedGroup, setSelectedGroup] = useState(''); // Filtro de grupo
 
   useEffect(() => {
     const fetchMarkers = async () => {
-      const spreadsheetId = '1YpG6mjwNuiSApHwJafqaiGnNccAE746gk56Z1SJc4Gg'; // Reemplaza con el ID de tu Spreadsheet
-      const apiKey = 'AIzaSyByc4JiGVTQCH4w-tPZWnNfVyjcgAjuBjo'; // Reemplaza con tu API Key
-      const range = 'GENERAL!A:P'; // Cambia el rango según la estructura de tu hoja
+      const spreadsheetId = '1YpG6mjwNuiSApHwJafqaiGnNccAE746gk56Z1SJc4Gg';
+      const apiKey = 'AIzaSyByc4JiGVTQCH4w-tPZWnNfVyjcgAjuBjo';
+      const range = 'GENERAL!A:Q';
 
       try {
         const response = await axios.get(
@@ -29,7 +23,7 @@ const MapComponent = () => {
         );
 
         const formattedMarkers = response.data.values.map(item => ({
-          group: item[0], // Esta es la columna A
+          group: item[0],
           specie: item[1],
           origin: item[2],
           taxon: item[3],
@@ -40,153 +34,147 @@ const MapComponent = () => {
           latitude: item[8],
           longitude: item[9],
           altitude: item[10],
-          position: { lat: parseFloat(item[11]), lng: parseFloat(item[12]) },          
+          position: { lat: parseFloat(item[11]), lng: parseFloat(item[12]) },    
+          img: item[16] ? item[16].split(',').map(img => img.trim()) : []
         }));
+
         setMarkers(formattedMarkers);
       } catch (error) {
         console.error("Error fetching markers: ", error);
       }
     };
+
     fetchMarkers();
   }, []);
 
-  const handleMarkerClick = (marker) => {
-    setSelectedMarker(marker);    
-  };
+  const handleMarkerClick = (marker) => setSelectedMarker(marker);
+  const handleGroupChange = (event) => setSelectedGroup(event.target.value);
 
-  const handleGroupChange = (event) => {
-    setSelectedGroup(event.target.value); // Actualiza el grupo seleccionado
-  };
-
-  // Función para obtener el color del ícono según el grupo
   const getMarkerIcon = (group) => {
-    switch (group) {
-      case 'Aves':
-        return 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
-      case 'Plantas':
-        return 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';      
-      case 'Turismo':
-        return 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png';      
-      default:
-        return 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'; // Color por defecto
-    }
+    const iconMap = {
+      'Aves': 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
+      'Plantas': 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+      'Turismo': 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
+    };
+    return iconMap[group] || 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
   };
 
   return (
     <div>
-      <div className="filters">
-        <h4>Filtrar:</h4>
-        <div className="filter-container">
-          <div className="custom-radio">
-            <label>
-              <input
-                type="radio"
-                value=""
-                checked={selectedGroup === ''}
-                onChange={handleGroupChange}
-              />
-              Todos
-              <span className="checkmark"></span>
-            </label>
-          </div>
-          <div className="custom-radio">
-            <label>
-              <input
-                type="radio"
-                value="Aves"
-                checked={selectedGroup === 'Aves'}
-                onChange={handleGroupChange}
-              />
-              Aves
-              <span className="checkmark"></span>
-            </label>
-          </div>
-          <div className="custom-radio">
-            <label>
-              <input
-                type="radio"
-                value="Plantas"
-                checked={selectedGroup === 'Plantas'}
-                onChange={handleGroupChange}
-              />
-              Plantas
-              <span className="checkmark"></span>
-            </label>
-          </div>
-          <div className="custom-radio">
-            <label>
-              <input
-                type="radio"
-                value="Turismo"
-                checked={selectedGroup === 'Turismo'}
-                onChange={handleGroupChange}
-              />
-              Turismo
-              <span className="checkmark"></span>
-            </label>
-          </div>
-        </div>                    
-      </div>
-
+      <FilterGroup selectedGroup={selectedGroup} handleGroupChange={handleGroupChange} />
+      
       <LoadScript googleMapsApiKey="AIzaSyByc4JiGVTQCH4w-tPZWnNfVyjcgAjuBjo">
-        <GoogleMap mapContainerStyle={mapContainerStyle} center={center} zoom={12}>
+        <GoogleMap mapContainerStyle={mapContainerStyle} center={center} zoom={10}>
           {markers
-            .filter(marker => selectedGroup === '' || marker.group === selectedGroup) // Muestra todos si no hay filtro
+            .filter(marker => !selectedGroup || marker.group === selectedGroup)
             .map((marker, index) => (
               <Marker
                 key={index}
                 position={marker.position}
-                icon={getMarkerIcon(marker.group)} // Cambia el ícono según el grupo
+                icon={getMarkerIcon(marker.group)}
                 onClick={() => handleMarkerClick(marker)}
               />
             ))}
-
+          
           {selectedMarker && (
             <InfoWindow
               position={selectedMarker.position}
-              onCloseClick={() => setSelectedMarker(null)}  // Cierra el InfoWindow
+              onCloseClick={() => setSelectedMarker(null)}
             >
-              <div className="info-window">
-                <h5>{selectedMarker.specie}</h5>
-                <img src="./images/pajaro-quemamais.png"/>
-                <p><strong>Familia: </strong>{selectedMarker.family}</p>
-                <a onClick={() => {
-                  const element = document.getElementById("info-box");
-                  if (element) {
-                    element.scrollIntoView({ behavior: "smooth" });
-                  }
-                }}>Ver más</a>
-              </div>
+              <MarkerInfo marker={selectedMarker} />
             </InfoWindow>
           )}
         </GoogleMap>
 
-        <div>
-          {selectedMarker && (
-            <div className={'card'} id="info-box">
-              <div className="columns">
-                <div className="column">
-                  <img src="./images/pajaro-quemamais.png"/>
-                  <ul>
-                    <li><strong>Latitud:</strong> {selectedMarker.latitude}</li>
-                    <li><strong>Longitud:</strong> {selectedMarker.longitude}</li>
-                    <li><strong>Altitud:</strong> {selectedMarker.altitude}</li>
-                    <li><strong>Distribución del taxón:</strong> {selectedMarker.taxon}</li>
-                    <li><strong>Estado de conservación:</strong> {selectedMarker.status}</li>
-                  </ul>
-                </div>
-                <div className="column">
-                  <h3>{selectedMarker.specie}</h3>
-                  <h5>Descripción</h5>
-                  <p>{selectedMarker.longDescription}</p>
-                </div>            
-              </div>  
-            </div>                  
-          )}
-        </div>       
+        {selectedMarker && <MarkerDetails marker={selectedMarker} />}
       </LoadScript>
-    </div>    
+    </div>
   );
 };
 
-export default MapComponent;    
+const FilterGroup = ({ selectedGroup, handleGroupChange }) => (
+  <div className="filters">
+    <h4>Filtrar:</h4>
+    <div className="filter-container">
+      {['Todos', 'Aves', 'Plantas', 'Turismo'].map(group => (
+        <div className="custom-radio" key={group}>
+          <label>
+            <input
+              type="radio"
+              value={group === 'Todos' ? '' : group}
+              checked={selectedGroup === (group === 'Todos' ? '' : group)}
+              onChange={handleGroupChange}
+            />
+            {group}
+            <span className="checkmark"></span>
+          </label>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+const MarkerInfo = ({ marker }) => (
+  <div className="info-window">
+    <h5>{marker.specie}</h5>
+    {marker.img.length > 0 ? (
+      <img 
+        src={`https://pt-tmp.s3.amazonaws.com/raiz${marker.img[0]}`} 
+        alt={`Image of ${marker.specie}`} 
+      />
+    ) : (
+      <p>No image available</p>
+    )}
+    <p><strong>Familia: </strong>{marker.family}</p>
+    <a onClick={() => document.getElementById("info-box")?.scrollIntoView({ behavior: "smooth" })}>
+      Ver más
+    </a>
+  </div>
+);
+
+const MarkerDetails = ({ marker }) => (
+  <div className="card" id="info-box">
+    <div className="columns">
+      <div className="column">
+        {marker.img.length > 0 ? (
+          <img 
+            src={`https://pt-tmp.s3.amazonaws.com/raiz${marker.img[0]}`} 
+            alt={`Image of ${marker.specie}`} 
+            style={{ maxWidth: '100%' }}
+          />
+        ) : (
+          <p>No image available</p>
+        )}
+        <ul>
+          <li><strong>Latitud:</strong> {marker.latitude}</li>
+          <li><strong>Longitud:</strong> {marker.longitude}</li>
+          <li><strong>Altitud:</strong> {marker.altitude}</li>
+          <li><strong>Distribución del taxón:</strong> {marker.taxon}</li>
+          <li><strong>Estado de conservación:</strong> {marker.status}</li>
+        </ul>
+      </div>
+      <div className="column">
+        <h3>{marker.specie}</h3>
+        <h5>Descripción</h5>
+        <p>{marker.longDescription}</p>
+        <div className="columns">
+          {marker.img.map((img, index) => (            
+            <div className="column" key={index}>
+              {img ? (
+                <img 
+                  src={`https://pt-tmp.s3.amazonaws.com/raiz${img}`} 
+                  alt={`Image of ${marker.specie}`} 
+                  style={{ maxWidth: '100%' }}
+                />
+              ) : (
+                <p></p>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+export default MapComponent;
