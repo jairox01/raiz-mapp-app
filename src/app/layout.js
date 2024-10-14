@@ -31,7 +31,7 @@ export default function RootLayout({ children }) {
         {children}
         <footer> 
           <div className="container">
-            <div className="text-sponsor">
+            <div className="text-sp-footer">
               <h4>Proyecto financiado por:</h4>
             </div>          
             <div className="columns">                              
