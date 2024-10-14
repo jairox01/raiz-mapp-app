@@ -60,10 +60,16 @@ body {
     font-size: rem(60);
     padding: rem(10) 0 rem(30) 0;
     font-weight: bold;
+    color: $green;
     
     span {
       color: $green;
     }
+  }
+
+  h2 {
+    font-size: rem(40);
+    font-weight: bold;    
   }
 
   h3 {
@@ -76,8 +82,7 @@ body {
   h4 {
     font-size: rem(24);
   }
-
-
+  
   h5 {
     font-size: rem(20);
     font-weight: bold;
@@ -87,6 +92,10 @@ body {
   @media only screen and (max-width: 600px) {
     h1 {
       font-size: rem(30);
+    }
+    h5 {
+      font-size: rem(16);
+      padding: rem(20) 0 rem(16) 0;
     }
   }
 }
@@ -111,8 +120,8 @@ a {
 
 p {
   margin: 0;
-  font-size: rem(14);
-  line-height: 30px;
+  font-size: rem(18);
+  line-height: 30px;  
 
   &:not(:last-child) {
 
@@ -174,4 +183,48 @@ h1,h2,h3,h4,h5,h6 {
 
 small {
   font-size: rem(12);
+}
+
+.intro-text {
+  padding: rem(20) 0;
+
+  .text {
+    padding: rem(40) 0;
+  }
+}
+
+.text-container {
+  padding-bottom: rem(20);
+  border-bottom: 1px dashed #d8d8d8;
+
+  h4 {
+    padding: rem(35) 0;
+    color: $green;
+    font-size: rem(35);
+    font-weight: bold;
+  }
+  .list-container {
+    margin-top: rem(20);
+    
+    .column {
+      border: 1px dashed #d8d8d8;
+    }
+
+    p{
+      margin-bottom: rem(5);
+      font-weight: bold;
+    }
+
+    ul {      
+
+      li {
+        font-size: rem(14);
+        list-style: circle;
+        margin-left: rem(10);
+        padding: rem(5) 0;        
+      }
+  
+      margin-bottom: rem(20);
+    }
+  }  
 }

@@ -1,24 +1,32 @@
 footer {
-    padding: rem(40) 0;    
-    border-bottom: rem(50) solid $green;
+    padding: rem(40) 0 0 0;    
     margin-bottom: rem(20);
+    margin: 0;
+    
 
-    h4 {
-        text-align: center;
+    h5, h4 {
         font-weight: bold;
+        font-size: rem(16);
     }
+
+
 
     .sponsors {
         display: flex;
         flex-direction: row;
-        width: 80%;
+        width: 70%;
         justify-content: space-evenly;
-        padding: rem(40) 0;
-        margin: auto;
-
+        padding: rem(10);        
+        margin: auto;       
+        align-items: center;
+        
         img {
-            max-width: 120px;
+            max-width: 140px;
         }
+    }
+
+    img {
+        max-width: 400px;
     }
 
     @media only screen and (max-width: 600px) { 
@@ -32,5 +40,43 @@ footer {
                 padding: rem(20);
             }
         }
+    }
+
+    .text-sponsor {
+        flex-direction: row;
+        display: flex;
+        align-items: center;
+        justify-content: center;        
+        padding: rem(10) 0;
+    }
+    .logo-container {
+        text-align: center;
+        padding: 40px;
+
+        img {
+            max-width: rem(300);
+        }
+    }
+    .text-container {
+        text-align: center;
+        padding: 40px;
+        border-bottom: 0;
+        
+        p {
+            font-size: rem(14);
+            line-height: rem(20);
+        }    
+    }
+
+    .copyright {
+        text-align: center;
+        background-color: $green;
+        padding: rem(20) 0;
+        p {
+            color: white;
+            font-size: rem(12);
+            margin-bottom: 0;
+            line-height: rem(20);
+        }        
     }
 }
