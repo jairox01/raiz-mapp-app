@@ -34,34 +34,9 @@ export default function Home() {
         <div className="text-container">  
           <h4>El proyecto ECO TUR INCA (AID 012590/08/7)</h4>
           <p>El proyecto Eco Tur Inca (Desarrollo de la economía turística sostenible y protección del medio ambiente) tiene como objetivo promover el crecimiento económico sostenible, la defensa del medio ambiente y contribuir a la seguridad en la región de Nariño.</p>
-          <div className="list-container">
-            <div className="columns">
-              <div className="column">
-                <p>Defensa del medio ambiente:</p>
-                <ul>
-                  <li>Sistema de fosas biológicas y plantas de tratamiento de aguas residuales.</li>
-                  <li>Sensibilización de la comunidad con talleres escolares sobre biodiversidad.</li>
-                  <li>Catálogo de especies endémicas.</li>
-                </ul>
-              </div>
-              <div className="column">
-              <p>Crecimiento económico:</p>
-              <ul>
-                <li>Creación de una red de turismo sostenible con 5 sitios culturales.</li>
-                <li>Cursos de formación para nuevas empresas turísticas.</li>
-                <li>Catálogo de ofertas turísticas.</li>
-              </ul>
-            </div>
-            <div className="column">
-              <p>Pacificación de los territorios:</p>
-              <ul>            
-                <li>Formación de operadores de seguridad y guías turísticas.</li>
-                <li>Planes de seguridad en colaboración con autoridades locales.</li>
-                <li>Organización de 12 festivales locales para sensibilizar sobre la paz.</li>
-              </ul>
-            </div> 
-            </div>                        
-          </div>          
+          <p>Para ello, se crea una red de turismo sostenible que incluye la mejora de 5 sitios culturales y la capacitación de nuevos emprendedores turísticos a través de cursos de formación sobre la gestión de empresas turísticas y el mapeo de la oferta turística de la zona.</p>
+          <p>Por la tutela del medio ambiente, el proyecto ha realizado sistemas de tratamiento de aguas y se llevan a cabo actividades de formación y sensibilización sobre biodiversidad en la comunidad.</p>
+          <p>Para mejorar la seguridad en los territorios involucrados, se han desarrollado planes de seguridad participativa en colaboración con las autoridades locales, las reservas indígenas y algunos sitios turísticos de la red de turismo sostenible, a través de la formación de operadores de seguridad y guías turísticas.</p>                 
         </div>              
       </div>    
     </div>
