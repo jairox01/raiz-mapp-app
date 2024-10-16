@@ -48,13 +48,16 @@ export default function RootLayout({ children }) {
                 <div className="sponsors">
                     <h4>Realizado por:</h4>                    
                     <a href="">
+                      <img src="./images/oikos_logo.png" alt="Aliado 1" />
+                    </a>
+                    <a href="">
                       <img src="./images/cevi.png" alt="Aliado 2" />
                     </a>
                     <a href="">
-                      <img src="./images/isais.png" alt="Aliado 3" width={120} height={100} />
+                      <img src="./images/isais.png" alt="Aliado 3" width={80} />
                     </a>
                     <a href="">
-                      <img src="./images/oikos_logo.png" alt="Aliado 1" />
+                      <img src="./images/consaca.png" alt="Aliado 2" width={80} />
                     </a>
                 </div>
               </div>              
