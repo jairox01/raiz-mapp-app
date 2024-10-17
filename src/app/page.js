@@ -13,7 +13,7 @@ export default function Home() {
             <p>Navega por el mapa a continuación para explorar la fauna y flora de los municipios de Consacà, Funes y Samaniego! Para cada especie encontrarás la ficha técnica con información sobre el estado de conservación, difusión y hábitat.</p>
           </div>
           <div className="video">
-            <iframe width="100%" height="700" src="https://www.youtube.com/embed/QVeh268B3h0?si=u50YGhaxBL2IIReb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>            
+            <iframe width="100%" height="700" src="https://www.youtube.com/embed/bY8H9XorWuA?si=k3f7WXfliEdLqMrh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>            
           </div>
         </div>
         <div className="map-container">
