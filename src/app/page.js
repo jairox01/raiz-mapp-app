@@ -1,5 +1,7 @@
-import Image from "next/image";
+import { metadata as mainMetadata } from "./metadata";
 import MapComponent from "./components/map";
+
+export const metadata = mainMetadata;
 
 export default function Home() {
   return (
