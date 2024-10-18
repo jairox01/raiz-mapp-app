@@ -125,7 +125,11 @@ const MarkerInfo = ({ marker }) => (
     ) : (
       <p>No image available</p>
     )}
-    <p><strong>Familia: </strong>{marker.family}</p>
+    {marker.group !== 'Turismo' ? (
+      <p>
+        <strong>Familia: </strong>{marker.family}
+      </p>
+    ) : (<p></p>)}
     <a onClick={() => document.getElementById("info-box")?.scrollIntoView({ behavior: "smooth" })}>
       Ver más
     </a>

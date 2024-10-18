@@ -1,0 +1,27 @@
+.contact {
+    .block {
+        padding: 2rem 0;
+        border-bottom: 0.5px dashed $black;
+    }
+    h1 {
+        color: $black;
+        font-size: rem(32);
+    }
+    h2 {
+        padding: 1rem 0;
+        color: $green;
+        font-size: rem(28);
+    }
+    ul {
+        li {
+            list-style: circle;
+            margin: 0 2rem;
+            font-size: rem(16);
+
+            a {
+                color: $black;
+                text-decoration: underline;
+            }
+        }
+    }
+}
