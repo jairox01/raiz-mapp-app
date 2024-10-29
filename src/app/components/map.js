@@ -150,11 +150,11 @@ const MarkerDetails = ({ marker }) => (
           <p>No image available</p>
         )}
         <ul>
-          <li><strong>Latitud:</strong> {marker.latitude}</li>
-          <li><strong>Longitud:</strong> {marker.longitude}</li>
-          <li><strong>Altitud:</strong> {marker.altitude}</li>
-          <li><strong>Distribución del taxón:</strong> {marker.taxon}</li>
-          <li><strong>Estado de conservación:</strong> {marker.status}</li>
+          { marker.latitude && ( <li><strong>Latitud:</strong> {marker.latitude}</li> )}    
+          { marker.longitude && ( <li><strong>Latitud:</strong> {marker.longitude}</li> )}          
+          { marker.altitude && ( <li><strong>Altitud:</strong> {marker.altitude}</li> )}          
+          { marker.taxon && ( <li><strong>Distribución del taxón:</strong> {marker.taxon}</li> )}          
+          { marker.status && ( <li><strong>Estado de conservación:</strong> {marker.status}</li> )}
         </ul>
       </div>
       <div className="column">

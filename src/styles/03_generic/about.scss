@@ -9,8 +9,22 @@
         font-size: rem(28);
     }
 
+    h3 {
+        padding: 1rem 0;        
+    }
+
+    .block {
+        margin: 2rem 0;
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    }
+
     .masonry {
-        columns: 18rem;
+        columns: 20rem;
         gap: 1rem;
         counter-reset: grid;
 
