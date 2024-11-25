@@ -9,7 +9,8 @@ const center = { lat: 0.9214413, lng: -77.4354531 };
 const MapComponent = () => {
   const [markers, setMarkers] = useState([]);
   const [selectedMarker, setSelectedMarker] = useState(null);
-  const [selectedGroup, setSelectedGroup] = useState(''); // Filtro de grupo
+  const [selectedGroup, setSelectedGroup] = useState(''); 
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchMarkers = async () => {
@@ -37,8 +38,8 @@ const MapComponent = () => {
           position: { lat: parseFloat(item[11]), lng: parseFloat(item[12]) },    
           img: item[16] ? item[16].split(',').map(img => img.trim()) : []
         }));
-
         setMarkers(formattedMarkers);
+        setIsLoading(false);
       } catch (error) {
         console.error("Error fetching markers: ", error);
       }
@@ -61,8 +62,7 @@ const MapComponent = () => {
 
   return (
     <div>
-      <FilterGroup selectedGroup={selectedGroup} handleGroupChange={handleGroupChange} />
-      
+      <FilterGroup selectedGroup={selectedGroup} handleGroupChange={handleGroupChange} />      
       <LoadScript googleMapsApiKey="AIzaSyByc4JiGVTQCH4w-tPZWnNfVyjcgAjuBjo">
         <GoogleMap mapContainerStyle={mapContainerStyle} center={center} zoom={10}>
           {markers
